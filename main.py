@@ -30,4 +30,5 @@ def myfunc():
 
 m = "lalalala"
 n="ce faci bai"
+b="un nou commit"
 myfunc()
