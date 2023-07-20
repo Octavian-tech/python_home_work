@@ -26,4 +26,5 @@ def myfunc():
     print("My name is " + _my_name)
 
 
+m = "lalalala"
 myfunc()
