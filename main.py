@@ -1,16 +1,29 @@
-# This is a sample Python script.
+# x = str(3)
+# y = int(3)
+# z = float(3)
+#
+# print(type(x))
+# print(type(y))
+# print(type(z))
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+nume: str = "munteanu"
+
+prenume: str = "octavian"
+email: str = "munteanu@gmail.com"
+
+print(nume + " " + prenume + " " + email)
+
+fruits = ["apple", "banana", "cherry"]
+
+x, y, z = fruits
+
+print(x + y + z)
+
+_my_name = "Octavian"
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def myfunc():
+    print("My name is " + _my_name)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+myfunc()
