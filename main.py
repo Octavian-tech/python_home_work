@@ -29,4 +29,5 @@ def myfunc():
 
 
 m = "lalalala"
+n="ce faci bai"
 myfunc()
