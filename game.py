@@ -18,14 +18,21 @@ def set_next_move(lista, symbol, table):
 
 
 def is_victory(table, icon):
-    if (table[1] == table[2] == table[3] == icon) or \
-            (table[4] == table[5] == table[6] == icon) or \
-            (table[7] == table[8] == table[9] == icon) or \
-            (table[1] == table[4] == table[7] == icon) or \
-            (table[2] == table[5] == table[8] == icon) or \
-            (table[3] == table[6] == table[9] == icon) or \
-            (table[1] == table[5] == table[9] == icon) or \
-            (table[3] == table[5] == table[7] == icon):
+    if table[1] == table[2] == table[3] == icon:
+        return True
+    elif table[4] == table[5] == table[6] == icon:
+        return True
+    elif table[7] == table[8] == table[9] == icon:
+        return True
+    elif table[1] == table[4] == table[7] == icon:
+        return True
+    elif table[2] == table[5] == table[8] == icon:
+        return True
+    elif table[3] == table[6] == table[9] == icon:
+        return True
+    elif table[1] == table[5] == table[9] == icon:
+        return True
+    elif table[3] == table[5] == table[7] == icon:
         return True
     else:
         return False
@@ -42,9 +49,20 @@ def machine_player(table, lista, symbol, symbol2):
     if next_move is not None:
         return next_move
 
-    if table[5] == '-':
-        return 5
+    # Alege coltul opus fata de mutarea jucatorului uman, daca este disponibil
+    if table[1] == symbol2 and table[9] == '-':
+        return 9
 
+    if table[3] == symbol2 and table[7] == '-':
+        return 7
+
+    if table[7] == symbol2 and table[3] == '-':
+        return 3
+
+    if table[9] == symbol2 and table[1] == '-':
+        return 1
+
+    # Alege un colt liber
     if table[1] == '-':
         return 1
     if table[3] == '-':
@@ -53,6 +71,10 @@ def machine_player(table, lista, symbol, symbol2):
         return 7
     if table[9] == '-':
         return 9
+
+    # Alege mijlocul daca este liber
+    if table[5] == '-':
+        return 5
 
     # Alege orice alta mutare disponibila
     for pos in range(1, 10):
@@ -84,7 +106,6 @@ if your_symbol == 'X':
     pc_symbol = '0'
 
 table = {pos: '-' for pos in range(1, 10)}
-print(table)
 
 while "-" in table.values():
     your_position = input("Alege pozitia: ")
@@ -103,10 +124,9 @@ while "-" in table.values():
         break
 
     pc_position = machine_player(table, lista=list_pos_castig, symbol=pc_symbol, symbol2=your_symbol)
-    print(pc_position)
     table[pc_position] = pc_symbol
     printTable(table)
 
     if is_victory(table, pc_symbol):
-        print("0 wins! Congratulation")
+        print("Calculatorul a castigat")
         break
